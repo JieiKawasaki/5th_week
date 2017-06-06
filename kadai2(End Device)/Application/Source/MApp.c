@@ -1225,7 +1225,7 @@ static void Router_HandleMcpsInput(mcpsToNwkMessage_t *pMsgIn)
     UartUtil_Print(" /1024 [g]\n\rX axis : 0x", gAllowToBlock_d);
     UartUtil_PrintHex(&pMsgIn->msgData.dataInd.pMsdu[5], 2, 1);
     UartUtil_Print(" /1024 [g]\n\r", gAllowToBlock_d);
-    /* added by yusk ~ 送信処理 ~ */
+    /* added by yusk ~ 騾∽ｿ｡蜃ｦ逅�~ */
     GenandTransData(7, pMsgIn->msgData.dataInd.pMsdu, (void*)mCoordInfo.coordAddress);
   }
     break;
@@ -1369,8 +1369,8 @@ static void GenandTransData(uint8_t Length, uint8_t* pTxData, uint8_t* dest_addr
   
   if(mpPacket != NULL)
   {
-      UartUtil_Print("(GenandTransData)dest_addr: ", dest_addr)
-      /* get data from UART */        
+      UartUtil_PrintHex(dest_addr, 2, 0);
+      /* get data from UART */
       mpPacket->msgData.dataReq.pMsdu = (uint8_t*)(&(mpPacket->msgData.dataReq.pMsdu)) + sizeof(uint8_t*);
       FLib_MemCpy(mpPacket->msgData.dataReq.pMsdu, (uint8_t*) pTxData, Length);
       /* Data was available in the UART receive buffer. Now create an
